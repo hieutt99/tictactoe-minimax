@@ -128,7 +128,6 @@ chosen = getBoardCopy(board.field)
 def minimax(position,depth,maximizing,Player_Letter,Computer_Letter):
 	eval = position.grade
 	if depth == 0 or checkEndGame(position.move,Player_Letter,Computer_Letter) == True : 
-		# print("gia tri cua minimax : "+str(eval))
 		return eval
 	if maximizing == True:
 		maxEval = -10000
@@ -183,12 +182,7 @@ def getPlayerMove(play_field,Computer_Letter,Player_Letter):
 
 	d = 7
 	move = minimax(t,d,True,Player_Letter,Computer_Letter)
-	# print(move)
-	# print(t.grade)
-	# print("test : ")
 	for i in t.children :
-		# printBoard(i.move)
-		# print(i.grade)
 		if(i.grade == t.grade):
 			chosen = getBoardCopy(i.move)
 	return chosen
@@ -222,16 +216,11 @@ def getComputerMove(play_field,Player_Letter,Computer_Letter):
 		top = top - 1
 
 		d = temp.depth
-		# print("o day depth bang : "+str(d))
 
-
-		#depth is even %2 , depth is odd %2-1
 		index = d%2 
-		# print("index : " + str(index) + "   depth : "+str(d))
 		
 		if availableMoves(temp.move,letter[index]) != None and checkEndGame(temp.move,letter[1],letter[0])==False: 
 			d -= 1
-			# print("o day nay depth bang : "+str(d))
 			for child in availableMoves(temp.move,letter[index]):
 				temp.add(Tree(move = child, depth = d))
 			for i in temp.children:
@@ -239,20 +228,9 @@ def getComputerMove(play_field,Player_Letter,Computer_Letter):
 			top = top + len(temp.children)
 		else :
 			temp.setGrade(Player_Letter,Computer_Letter)
-		# print("==========================")
-		# print("in ra stack : ")
-		# for i in range(len(stack)):
-		# 	printBoard(stack[i].move)
-		# 	print("---------------")
-		# print("==========================")
-		# print(top)
-		# print(len(stack))
-	# print("nhap xog vao tree")
-	# print("test nuoc di : ")
 
 	d = 8
 	move = minimax(t,d,True,Player_Letter,Computer_Letter)
-	# printTree_pre(t)
 	for i in t.children :
 		if(i.grade == t.grade):
 			chosen = getBoardCopy(i.move)
@@ -262,27 +240,7 @@ Player_Letter, Computer_Letter = ['X','O']
 play_field = board.field3
 game_status = checkBoardFull(play_field)
 # game_status = False
-#=================================================================================
-# print("===========================TEST MOVE=========================")
-# while game_status == False :
-# 	# move = getComputerMove(play_field)
-# 	# print('letter above is Computer move')
-# 	# fillTheBoard(play_field, move, Computer_Letter)
-# 	# printBoard(play_field)
-# 	chosen = getPlayerMove(play_field,Computer_Letter,Player_Letter)
-# 	printBoard(chosen)
-# 	# stack = []
-# 	# t = Tree(play_field)
-# 	# for i in range(10):
-# 	# 	stack.append(t)
-# 	# for i in range(10):
-# 	# 	printBoard(stack[i].move)
-# 	# print(checkEndGame(board.field2,Player_Letter,Computer_Letter))
-# 	game_status = True
-# 	if game_status == True:
-# 		print('End test')
-# 		print("=================================================")
-#==================================================================================
+
 while game_status == False:
 	move = getComputerMove(play_field,Player_Letter,Computer_Letter)
 	play_field = getBoardCopy(move)

@@ -1,4 +1,4 @@
-# tictactoe-minimax
+# tictactoe-minimax-python
 tictactoe with minimax
 
 code by minari

@@ -1,9 +1,9 @@
 # tictactoe-minimax-python
-tictactoe with minimax
+##tictactoe with minimax
 
-code by minari
+##code by minari
 
-#run : python tictactoe.py
+###run : python tictactoe.py
 
-first upload on 19/10/2019
-fix  21/11/2019
+##first upload on 19/10/2019
+##fix  21/11/2019
